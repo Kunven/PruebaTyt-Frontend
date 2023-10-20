@@ -1,0 +1,65 @@
+<mat-list>
+  <mat-list-item *ngIf="data.edit == false">Registrar Usuario</mat-list-item>
+  <mat-list-item *ngIf="data.edit == true">Modificar Usuario</mat-list-item>
+  <mat-divider></mat-divider>  
+</mat-list>
+<div mat-dialog-content>
+  <div class="grid">
+    <div>
+      <label class="labels">Departamento:</label>
+      <mat-select placeholder="Seleccione un Departamento" [(ngModel)]="user.idDepartamento">        
+        <mat-option *ngFor="let departamento of data.departamentos" [value]="departamento.id">
+          {{departamento.nombre}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div>
+      <label class="labels">Cargos:</label>
+      <mat-select placeholder="Seleccione un Cargo" panelClass="topunit" [(ngModel)]="user.idCargo">
+        <mat-option *ngFor="let cargo of data.cargos" [value]="cargo.id">
+          {{cargo.nombre}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div>
+      <label class="labels">Usuario:</label>
+      <mat-form-field class="text-input">        
+        <input matInput [(ngModel)]="user.usuario">
+      </mat-form-field>
+    </div>
+    <div>
+      <label class="labels">Email:</label>
+      <mat-form-field class="text-input">        
+        <input matInput [(ngModel)]="user.email">
+      </mat-form-field>
+    </div>
+    <div>
+      <label class="labels">Primer Nombre:</label>
+      <mat-form-field class="text-input">        
+        <input matInput [(ngModel)]="user.primerNombre">
+      </mat-form-field>
+    </div>
+    <div>
+      <label class="labels">Segundo Nombre:</label>
+      <mat-form-field class="text-input">        
+        <input matInput [(ngModel)]="user.segundoNombre">
+      </mat-form-field>
+    </div>
+    <div>
+      <label class="labels">Primer Apellido:</label>
+      <mat-form-field class="text-input">
+        <input matInput [(ngModel)]="user.primerApellido">
+      </mat-form-field>
+    </div>
+    <div>
+      <label class="labels">Segundo Apellido:</label>
+      <mat-form-field class="text-input">        
+        <input matInput [(ngModel)]="user.segundoApellido">
+      </mat-form-field>      
+    </div>
+  </div> 
+</div>
+<div mat-dialog-actions class="buttons">
+  <button mat-button (click)="submit()" class="confirmButton" >Registrar</button>
+  <button mat-button [mat-dialog-close]="data.animal" class="cancelButon" cdkFocusInitial>Cancelar</button>
+</div>
